@@ -1,0 +1,129 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewUser</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $(".text-danger").hide();
+            $("#btn_NewUser").click(function () {
+                if ($("#EmailID").val().length == 0)
+                {
+                    $("#lbl_Emailid_error").show();
+                    $("#EmailID").focus();
+                    return false;
+                }
+                else
+                {
+                    $("#lbl_Emailid_error").hide();
+                }
+                //if (!regexp.test($("#EmailID").val()))
+                //{
+                //    $("#lbl_EmailID_error").show();
+                //    $("#EmailID").focus();
+                //    return false;
+                //}
+                //else
+                //{
+                //    $("#lbl_EmailID_error").hide();
+                //}
+                if ($("#Password").val().length == 0)
+                {
+                    $("#lbl_password_error").show();
+                    $("#Password").focus();
+                    return false;
+                }
+                else
+                {
+                    $("#lbl_password_error").hide();
+                }
+                if ($("#FullName").val().length == 0)
+                {
+                    $("#lbl_Fullname_error").show();
+                    $("#FullName").focus();
+                    return false;
+                }
+                else
+                {
+                    $("#lbl_Fullname_error").hide();
+                }
+                if ($("#City").val().length == 0)
+                {
+                    $("#lbl_city_error").show();
+                    $("#City").focus();
+                    return false;
+                }
+                else
+                {
+                    $("#lbl_city_error").hide();
+                }
+                if ($("#Mobileno").val().length == 0)
+                {
+                    $("#lbl_Mobileno_error").show();
+                    $("#Mobileno").focus();
+                    return false;
+                }
+                else
+                {
+                    $("#lbl_Mobileno_error").hide();
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div align="center">
+        @using (Html.BeginForm("NewUser", "Bank", FormMethod.Post,
+                        new { @class = "container", @style = "text-align:left;width:35%" }))
+        {
+            <div class="form-group">
+                <label for="EmailID" class="form-control-static">Email ID</label>
+                <input type="text" name="EmailID" id="EmailID" class="form-control" />
+                <label for="EmailID" class="text-danger" id="lbl_Emailid_error">*</label>
+                <label for="EmailID" id="lbl_EmailID_error" class="text-danger">Invalid Format</label>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="form-control-static">Password</label>
+                <input type="text" name="Password" id="Password" class="form-control" />
+                <label for="Password" class="text-danger" id="lbl_password_error">*</label>
+            </div>
+            <div class="form-group">
+                <label for="FullName" class="form-control-static">Name</label>
+                <input type="text" name="FullName" id="FullName" class="form-control" />
+                <label for="FullName" class="text-danger" id="lbl_Fullname_error">*</label>
+            </div>
+            <div class="form-group">
+                <label for="City" class="form-control-static">City </label>
+                <select name="City" id="City" class="form-control">
+                    <option value="">Select</option>
+                    <option value="">BGL</option>
+                    <option value="">Chennai</option>
+                    <option value="">Hyd</option>
+                </select>
+                <label for="City" class="text-danger" id="lbl_city_error">*</label>
+            </div>
+            <div class="form-group">
+                <label for="Mobileno" class="form-control-static">Mobile no</label>
+                <input type="text" name="Mobileno" id="Mobileno" class="form-control" />
+                <label for="Mobileno" class="text-danger" id="lbl_Mobileno_error">*</label>
+            </div> 
+            <div class="form-group">
+                <input type="submit" id="btn_NewUser" value="Login"  class="btn-danger" />
+                @Html.ActionLink("NewLogin", "Login", "Bank")
+            </div>
+          }
+      </div>
+     
+</body>
+</html>
